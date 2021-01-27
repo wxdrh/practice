@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+
+    <listeners>
+        <listener class-name="listeners.MyListener"/>
+    </listeners>
+    <test verbose="2" preserve-order="true"
+          name="launch_chrome.class">
+        <groups>
+            <run>
+                <include name="amazon"/>
+                <include name="daraz"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="tests.amazon"/>
+        </classes>
+    </test>
+</suite>
