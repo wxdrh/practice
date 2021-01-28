@@ -4,6 +4,7 @@ import com.relevantcodes.extentreports.LogStatus;
 import com.sun.jdi.event.ExceptionEvent;
 import listeners.MyListener;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -15,11 +16,10 @@ import java.util.Iterator;
 import java.util.List;
 import Main.Utilities;
 
-public class repoDaraz {
+public class repoDaraz extends Utilities{
     WebDriver driver;
     Data data;
-    String Website = "Daraz";
-    Utilities u=new Utilities();
+    MyListener l=new MyListener();
 
     public repoDaraz(WebDriver driver) {
         this.driver = driver;
@@ -38,18 +38,19 @@ public class repoDaraz {
 
     public void clickSearchButton() {
         try {
-            u.click(searchButton);
-            MyListener.test.log(LogStatus.PASS, "Clicking on seacrh button");
+            click(searchButton);
+            l.test.log(LogStatus.PASS, "Clicking on seacrh button");
         }
         catch (Exception e)
         {
-            MyListener.test.log(LogStatus.FAIL, "Unable to click on seacrh button");
+            l.test.log(LogStatus.FAIL, "Unable to click on seacrh button");
             e.printStackTrace();
         }
     }
 
     public void SearchBox(String Website){
-        searchBox.sendKeys(Website);
+        enterText(searchBox,Website);
+
         MyListener.test.log(LogStatus.PASS,"Enter data in search box");
     }
 

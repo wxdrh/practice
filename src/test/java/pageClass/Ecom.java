@@ -1,27 +1,32 @@
 package pageClass;
 
+import Main.Utilities;
 import listeners.MyListener;
 import objectRepo.repoAmazon;
 import objectRepo.repoDaraz;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 
+import org.testng.annotations.Test;
 import tests.base;
 import datafromExcel.Data;
 
-
+import static Main.Utilities.*;
 
 
 public class Ecom extends MyListener {
-    WebDriver driver;
+   static WebDriver driver;
+
     Data data = new Data();
     public void searchAmazon() {
-        driver = base.setupApplication();
-        driver.get(data.getUrl("amazon"));
+        driver=Utilities.getDriver();
+        waitImplicit();
+        navigateToURL(data.getUrl("amazon"));
         repoAmazon test = new repoAmazon(driver);
         test.SearchBox(data.excel("amazon"));
         test.clickSearchButton();
         test.allProducts();
+        currentURL();
 
 
     }

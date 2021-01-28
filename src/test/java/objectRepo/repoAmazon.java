@@ -1,5 +1,6 @@
 package objectRepo;
 
+import Main.Utilities;
 import com.relevantcodes.extentreports.LogStatus;
 import listeners.MyListener;
 import org.openqa.selenium.By;
@@ -13,11 +14,12 @@ import java.util.Iterator;
 import java.util.List;
 import datafromExcel.Data;
 
-public class repoAmazon {
+public class repoAmazon extends Utilities{
     WebDriver driver;
 Data data;
 String Website = "Amazon";
-    public repoAmazon(WebDriver driver ) {
+
+    public repoAmazon(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver,this);
         data = new Data();
@@ -31,13 +33,13 @@ String Website = "Amazon";
     WebElement products;
 
     public void clickSearchButton() {
-        searchButton.click();
+        jsClick(searchButton);
         MyListener.test.log(LogStatus.PASS,"Clicking on seacrh button");
     }
 
     public void SearchBox(String Website){
         searchBox.sendKeys(Website);
-        MyListener.test.log(LogStatus.PASS,"Enter data in search box");
+MyListener.test.log(LogStatus.PASS,"Enter data in search box");
     }
 
 public void allProducts() {
