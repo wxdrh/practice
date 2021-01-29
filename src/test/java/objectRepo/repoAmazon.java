@@ -8,6 +8,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import Enum.AmazonPageVariables;
+
 
 
 import java.util.Iterator;
@@ -18,6 +20,8 @@ public class repoAmazon extends Utilities{
     WebDriver driver;
 Data data;
 String Website = "Amazon";
+
+
 
     public repoAmazon(WebDriver driver) {
         this.driver = driver;
@@ -32,8 +36,13 @@ String Website = "Amazon";
     @FindBy(xpath = "//*[@data-component-type='s-search-result']")
     WebElement products;
 
+
+
     public void clickSearchButton() {
-        jsClick(searchButton);
+        WebElement a = getWebElement(AmazonPageVariables.XPATH_AMAZON_SEARCH_BUTTON.getResponse());
+        System.out.println(a);
+        jsClick(a);
+
         MyListener.test.log(LogStatus.PASS,"Clicking on seacrh button");
     }
 

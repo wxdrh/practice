@@ -95,4 +95,9 @@ public class Utilities {
     public static void getText(WebElement element) {
         driver.findElement((By) element).getText();
     }
+
+    public static WebElement getWebElement(String xPath){
+       WebElement element = driver.findElement(By.xpath(xPath));
+        return element;
+    }
 }
